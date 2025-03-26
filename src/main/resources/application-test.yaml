@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: skb-school-test
+
+myconfig:
+#  value1: test
+  value2: 19
+  value3: false
+  list:
+    - only
+    - for
+    - test
+
+special-env-variable: ${SPECIAL_ENV_VARIABLE:default}

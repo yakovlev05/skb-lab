@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: skb-school-prod
+
+myconfig:
+  value1: production
+  value2: 343
+  value3: true
+  list:
+    - it`s
+    - prod
+
+special-env-variable: ${SPECIAL_ENV_VARIABLE:default}

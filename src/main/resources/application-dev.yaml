@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: skb-school-dev
+
+myconfig:
+  value1: development
+  value2: 52
+  value3: false
+  list:
+    - hello
+    - dev
+
+special-env-variable: ${SPECIAL_ENV_VARIABLE:default}

@@ -1,8 +1,10 @@
 package ru.yakovlev05.school.skblab.service.impl;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.yakovlev05.school.skblab.dto.TaskDto;
+import ru.yakovlev05.school.skblab.dto.TaskDtoIn;
+import ru.yakovlev05.school.skblab.dto.TaskDtoOut;
 import ru.yakovlev05.school.skblab.entity.EventEntity;
 import ru.yakovlev05.school.skblab.entity.TaskEntity;
 import ru.yakovlev05.school.skblab.repository.TaskRepository;
@@ -18,23 +20,25 @@ public class TaskServiceImpl implements TaskService {
 
     private final TaskRepository taskRepository;
 
+    @Transactional
     @Override
-    public void createTask(TaskDto taskRequest) {
+    public void createTask(TaskDtoIn taskRequest) {
         TaskEntity task = new TaskEntity();
         task.setName(taskRequest.name());
 
         Set<EventEntity> events = taskRequest.events().stream()
                 .map(title -> new EventEntity(title, task))
                 .collect(Collectors.toSet());
-        task.setEvents(events);
+        task.getEvents().addAll(events);
 
         taskRepository.save(task);
     }
 
+    @Transactional
     @Override
-    public List<TaskDto> getAllTasks() {
-        return taskRepository.findAll().stream()
-                .map(task -> new TaskDto(
+    public List<TaskDtoOut> getAllTasks() {
+        return taskRepository.findAllAndFetchEvents().stream()
+                .map(task -> new TaskDtoOut(
                         task.getName(),
                         task.getEvents().stream()
                                 .map(EventEntity::getTitle)

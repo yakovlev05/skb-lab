@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: consumer
+
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+server:
+  port: 8082
+
+app:
+  kafka:
+    consumer:
+      hello:
+        topic: hello.create
+        group-id: hello-in
+        package: ru.yakovlev05.school.producer

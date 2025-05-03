@@ -20,9 +20,6 @@ import ru.yakovlev05.school.consumer.dto.HelloDto;
 @EnableKafka
 public class KafkaConfig {
 
-    @Value("${app.kafka.consumer.hello.package}")
-    private String trustedPackage;
-
     private final ObjectMapper objectMapper;
     private final KafkaProperties kafkaProperties;
 

@@ -15,4 +15,3 @@ app:
       hello:
         topic: hello.create
         group-id: hello-in
-        package: ru.yakovlev05.school.producer

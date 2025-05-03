@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: producer
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+
+
+app:
+  kafka:
+    producer:
+      hello:
+        topic: hello.create

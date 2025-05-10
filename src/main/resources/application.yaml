@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: skb-lab
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
